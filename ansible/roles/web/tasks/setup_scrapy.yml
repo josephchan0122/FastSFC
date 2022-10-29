@@ -1,0 +1,49 @@
+---
+# (http://scraping.pro/use-headless-firefox-scraping-linux/)
+
+- name: Remove iceweasel
+  apt:
+    name: iceweasel
+    state: absent
+  tags: scrapy
+
+- name: Add package repository containing Firefox
+  apt_repository:
+    repo: deb http://downloads.sourceforge.net/project/ubuntuzilla/mozilla/apt all main
+    state: present
+  tags: scrapy
+
+- name: Install corresponding key
+  apt_key:
+    keyserver: keyserver.ubuntu.com
+    id: C1289A29
+    state: present
+  tags: scrapy
+
+- name: Install required libraries
+  apt: name={{ item }} update_cache={{ update_apt_cache }} force=yes state=installed
+  with_items:
+    - xvfb
+    - firefox-mozilla-build
+    - libdbus-glib-1-2
+    - libgtk2.0-0
+    - libasound2
+  tags: scrapy
+
+- name: Download geckodriver
+  get_url: url="https://github.com/mozilla/geckodriver/releases/download/v0.13.0/geckodriver-v0.13.0-linux64.tar.gz" dest=/tmp mode=0777
+  tags:
+    - scrapy
+    - geckodriver
+
+- name: Install geckodriver
+  unarchive: src="/tmp/geckodriver-v0.13.0-linux64.tar.gz" dest=/usr/local/bin/ mode=0755 copy=no
+  tags:
+    - scrapy
+    - geckodriver
+
+- name: Add geckodriver to path
+  shell: PATH=$PATH:/usr/local/bin/geckodriver
+  tags:
+    - scrapy
+    - geckodriver

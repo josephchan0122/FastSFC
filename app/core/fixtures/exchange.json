@@ -1,0 +1,34 @@
+[
+    {"model": "core.Exchange", "pk": 1, "fields": {
+        "short_name": "HKSE",
+        "full_name": "Hong Kong Stock Exchange"
+    }},
+    {"model": "core.Exchange", "pk": 2, "fields": {
+        "short_name": "SGX",
+        "full_name": "Singapore Stock Exchange"
+    }},
+    {"model": "core.Exchange", "pk": 3, "fields": {
+        "short_name": "SSE",
+        "full_name": "Shanghai Stock Exchange"
+    }},
+    {"model": "core.Exchange", "pk": 4, "fields": {
+        "short_name": "SZSE",
+        "full_name": "Shenzhen Stock Exchange"
+    }},
+    {"model": "core.Exchange", "pk": 5, "fields": {
+        "short_name": "NYSE",
+        "full_name": "New York Stock Exchange"
+    }},
+    {"model": "core.Exchange", "pk": 6, "fields": {
+        "short_name": "NASDAQ",
+        "full_name": "NASDAQ Global Select Market"
+    }},
+    {"model": "core.Exchange", "pk": 7, "fields": {
+        "short_name": "AMEX",
+        "full_name": "American Stock Exchange"
+    }},
+    {"model": "core.Exchange", "pk": 8, "fields": {
+        "short_name": "US",
+        "full_name": "Other US Exchanges"
+    }}
+]

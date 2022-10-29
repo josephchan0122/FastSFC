@@ -1,0 +1,16 @@
+---
+
+- name: Create the Supervisor config file for app
+  template: src=supervisor_config.j2
+            dest=/etc/supervisor/conf.d/{{ application_name }}.conf
+            backup=yes
+
+- name: Create the supervisor checker sh
+  template: src=check_supervisor.j2
+            dest=/webapps/check_supervisor.sh
+            backup=yes
+            force=yes
+            mode="u+rwx"
+
+- name: Re-read the Supervisor config files
+  supervisorctl: name={{ application_name }} state=present

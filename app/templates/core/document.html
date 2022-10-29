@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load humanize %}
+{% load filters %}
+
+{% block title %}{{ company.short_name }} ({{ company.ticker }}) Filings - FastSFC{% endblock %}
+{% block description %}{{ document.description }} published on {{ document.date | date:"d/m/y" }}{% endblock %}
+
+{% block content %}
+
+<section id="document-detail"></section>
+
+{% endblock %}

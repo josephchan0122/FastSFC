@@ -1,0 +1,54 @@
+---
+
+- name: Install Nginx
+  apt: name=nginx update_cache={{ update_apt_cache }} state=installed
+  tags:
+    - packages
+    - nginx
+
+# - name: Copy the SSL certificate to the remote server
+#   copy:
+#     content: "{{ ssl_crt }}"
+#     dest: "{{ ssl_dest_dir }}/{{ application_name }}.crt"
+#   notify: restart nginx
+#   tags: nginx
+
+# - name: Copy the SSL private key to the remote server
+#   copy:
+#     content: "{{ ssl_key }}"
+#     dest: "{{ ssl_dest_dir }}/{{ application_name }}.key"
+#   notify: restart nginx
+#   tags: nginx
+
+- name: Create the Nginx configuration file without SSL
+  template: src=nginx_site_config.j2
+            dest=/etc/nginx/sites-available/{{ application_name }}
+            backup=yes
+  notify: reload nginx
+  when: nginx_with_ssl is undefined or nginx_with_ssl == false
+  tags: nginx
+
+- name: Create the Nginx configuration file with SSL
+  template: src=nginx_site_config_ssl.j2
+            dest=/etc/nginx/sites-available/{{ application_name }}
+            backup=yes
+  notify: reload nginx
+  when: nginx_with_ssl is defined and nginx_with_ssl
+  tags: nginx
+
+- name: Ensure that the default site is disabled
+  command: rm /etc/nginx/sites-enabled/default
+           removes=/etc/nginx/sites-enabled/default
+  notify: reload nginx
+  tags: nginx
+
+- name: Ensure that the application site is enabled
+  command: ln -s /etc/nginx/sites-available/{{ application_name }}
+           /etc/nginx/sites-enabled/{{ application_name }}
+           creates=/etc/nginx/sites-enabled/{{ application_name }}
+  notify: reload nginx
+  tags: nginx
+
+- name: Ensure Nginx service is started
+  service: name=nginx state=started enabled=yes
+  tags: nginx

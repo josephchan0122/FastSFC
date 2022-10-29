@@ -1,0 +1,62 @@
+---
+
+# HK
+- name: HKEx new filings cronjob
+  cron: name="hk hourly new filings"
+        user="root"
+        minute="0"
+        job="/webapps/scrapy.sh crawl hkex_new_filing"
+  tags: cron
+
+- name: HKEx company cronjob
+  cron: name="hk daily refresh company"
+        user="root"
+        minute="0" hour="8"
+        job="/webapps/scrapy.sh crawl hkex_company"
+  tags: cron
+
+# 9AM GMT, which is 5PM HKT, after market close
+- name: HKEx filing count cronjob
+  cron: name="hk daily filing count"
+        user="root"
+        minute="0" hour="9"
+        job="/webapps/scrapy.sh crawl hkex_filing_count"
+  tags: cron
+
+- name: HKEx filings cronjob
+  cron: name="hk daily filing pull"
+        user="root"
+        minute="0" hour="10"
+        job="/webapps/scrapy.sh crawl hkex_filing -a new=True"
+  tags: cron
+
+- name: HKEx PHIP and A1 filing cronjob
+  cron: name="hk daily PHIP and A1 filing pull"
+        user="root"
+        minute="0" hour="11"
+        job="/webapps/scrapy.sh crawl hkex_new_issuer"
+  tags: cron
+
+# US
+# Run every 12 hours
+- name: US new filings cronjob
+  cron: name="us hourly filing pull"
+        user="root"
+        minute="0" hour="11,23"
+        job="/webapps/scrapy.sh crawl us_new_filing"
+  tags: cron
+
+# 10PM GMT, which is 5-6pm EST, after market close
+- name: US company cronjob
+  cron: name="us daily refresh company"
+        user="root"
+        minute="0" hour="21"
+        job="/webapps/scrapy.sh crawl us_company"
+  tags: cron
+
+- name: US new filings count
+  cron: name="us daily filing count"
+        user="root"
+        minute="0" hour="22"
+        job="/webapps/scrapy.sh crawl us_filing_count"
+  tags: cron

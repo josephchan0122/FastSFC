@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load humanize %}
+{% load filters %}
+
+{% block title %}{{ company.short_name }} ({{ company.ticker }}) Filings - FastSFC{% endblock %}
+{% block description %}{{ document.description }} published on {{ document.date | date:"d/m/y" }}{% endblock %}
+
+{% block content %}
+
+<span id="app"></span>
+<section id="website-document-detail"></section>
+
+{% endblock %}

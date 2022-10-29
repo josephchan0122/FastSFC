@@ -1,0 +1,17 @@
+---
+
+- name: Install additional packages
+  apt: name={{ item }} update_cache={{ update_apt_cache }} force=yes state=installed
+  with_items:
+    - libmysqlclient-dev # for python-mysql
+    - python-dev # for python-mysql
+    - libxml2-dev # for lxml
+    - libxslt1-dev # for lxml
+    - lib32z1-dev # for lxml
+    - python-tk # for camelot (pdf reading library)
+    - ghostscript # for camelot (pdf reading library)
+
+- name: Install the build dependencies for package "lxml"
+  apt:
+    pkg: python-lxml
+    state: build-dep

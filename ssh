@@ -1,0 +1,43 @@
+#!/bin/bash
+
+argument="$1"
+
+display_usage() {
+  echo
+  echo "Usage: $0"
+  echo
+  echo " compute   SSH into compute"
+  echo " web       SSH into web"
+  echo
+}
+
+ssh_web() {
+  ssh -t -i ~/.ssh/fastsfc.pem ubuntu@ec2-3-1-117-36.ap-southeast-1.compute.amazonaws.com "cd /webapps && sudo su ; bash"
+}
+
+ssh_compute() {
+  ssh -t -i ~/.ssh/fastsfc.pem ubuntu@ec2-13-250-105-132.ap-southeast-1.compute.amazonaws.com "cd /webapps && sudo su ; bash"
+}
+
+raise_error() {
+  local error_message="$@"
+  echo "${error_message}" 1>&2;
+}
+
+if [[ -z $argument ]] ; then
+  raise_error "Missing argument"
+  display_usage
+else
+  case $argument in
+    web)
+      ssh_web
+      ;;
+    compute)
+      ssh_compute
+      ;;
+    *)
+      raise_error "Unknown argument: ${argument}"
+      display_usage
+      ;;
+  esac
+fi

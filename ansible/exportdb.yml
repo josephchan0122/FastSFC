@@ -1,0 +1,46 @@
+---
+
+- name: Export local db
+  hosts: local
+  connection: local
+  sudo: no
+  vars_files:
+    - env_vars/base.yml
+    - env_vars/{{ env }}.yml
+    - env_vars/local.yml
+  tasks:
+    - name: Install MySQL DB
+      pip: name=MySQL-python
+      tags: local
+
+    - name: Export local MySQL database
+      mysql_db: state=dump name={{ mysql_local_db_name }} target=/tmp/{{ application_name }}.sql
+      tags: local
+
+    - name: Delete database
+      mysql_db:
+        name: '{{ application_name }}'
+        state: absent
+        login_host: '{{ db_host }}'
+        login_user: '{{ db_user }}'
+        login_password: '{{ db_password }}'
+      tags: remote
+
+    - name: Create database
+      mysql_db:
+        name: '{{ application_name }}'
+        state: present
+        login_host: '{{ db_host }}'
+        login_user: '{{ db_user }}'
+        login_password: '{{ db_password }}'
+      tags: remote
+
+    - name: Import database into MySQL
+      mysql_db:
+        name: '{{ application_name }}'
+        state: import
+        target: '/tmp/{{ application_name }}.sql'
+        login_host: '{{ db_host }}'
+        login_user: '{{ db_user }}'
+        login_password: '{{ db_password }}'
+      tags: remote

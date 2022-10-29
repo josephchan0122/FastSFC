@@ -1,0 +1,26 @@
+<nav id="header-nav" {% if index_view %}class="index-nav"{% endif %}>
+  <a class="navbar-brand" href="/">
+    <img class="brand" src="/static/img/logo.png" alt="FastSFC - Get Hong Kong Stock Exchange Filings Fast"/>
+  </a>
+  {% if not index_view %}
+  <div id="input-search"><i class="spinner"></i></div>
+  {% endif %}
+  <div class="collapse navbar-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="contact">hello@fastsfc.com</li>
+      {% if request.user.is_authenticated %}
+      <li id="profile-dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          {{ request.user }} <span class="fa fa-angle-down"></span>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-light dropdown-menu-sm" aria-labelledby="profile-dropdown">
+              <li><a href="/settings">Settings</a></li>
+              <li><a href="/logout">Logout</a></li>
+          </ul>
+      </li>
+      {% else %}
+      <li><a href="/login">Login</a></li>
+      {% endif %}
+    </ul>
+  </div>
+</nav>

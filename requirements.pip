@@ -1,0 +1,50 @@
+# This file collects all required third-party applications that are needed
+# to run this project. Later you can install all these apps in a row
+# using pip. Example::
+#
+#     pip install -r requirements.pip
+
+# App
+django==1.11.17
+pandas==0.24.1
+django_compressor
+django-webpack-loader
+django-allauth==0.24.1
+xlrd
+titlecase
+html2text==2018.1.9
+
+# Lint
+flake8==3.7.7
+autopep8==1.4.4
+
+# Rest API
+djangorestframework==3.9.4
+markdown==3.1.1
+django-filter==2.1.0
+jsonfield
+
+# Search
+lxml
+elasticsearch-dsl
+certifi
+
+# PDF
+camelot-py[cv,plot]
+
+# Scraper
+Scrapy==1.6.0
+
+# Server
+gunicorn
+supervisor
+
+# AWS
+boto3
+django-ses
+
+# Database
+mysqlclient
+
+# Testing
+nose

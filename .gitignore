@@ -1,0 +1,77 @@
+# Cruft
+*.pyc
+*.egg-info
+*~
+*#
+.#*
+.DS_Store
+
+# Django Settings
+app/settings/local.py
+app/settings/local/*
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+env/
+bin/
+build/
+develop-eggs/
+dist/
+eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+.tox/
+.coverage
+.cache
+nosetests.xml
+coverage.xml
+
+# Django stuff
+*.log
+*.pot
+
+# Sphinx documentation
+docs/_build/
+
+# Frontend
+.tmp
+node_modules
+.npm
+npm-debug.log*
+package-lock.json
+*.hot-update.json
+*.hot-update.js
+
+# Test
+coverage
+.eslintcache
+
+# Logs
+*.log
+
+# npm & yarn
+# Editor/IDE
+.idea
+packages/api/etc/
+
+# Scraper
+scraper

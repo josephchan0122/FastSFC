@@ -1,0 +1,28 @@
+---
+
+- name: Ensure Python 2 is installed (needed for Ansible)
+  hosts: computeservers
+  sudo: yes
+  sudo_user: root
+  remote_user: ubuntu
+  gather_facts: no
+  tasks:
+    - name: 'install python2'
+      raw: sudo apt-get -y install python
+
+- name: Provision a {{ application_name }} compute server
+  hosts: computeservers
+  sudo: yes
+  sudo_user: root
+  remote_user: ubuntu
+  vars:
+    - update_apt_cache: yes
+    - run_django_db_migrations: yes
+    - webserver: no
+    - computeserver: yes
+  vars_files:
+    - env_vars/base.yml
+    - env_vars/{{ env }}.yml
+  roles:
+    - base
+    - web

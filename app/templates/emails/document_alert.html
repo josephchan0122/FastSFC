@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>FastSFC Alert</title>
+</head>
+<body>
+<div>
+    <p>
+        <b>{{ company_name }} ({{ company_ticker }})</b>
+        <br/>
+        {{ document_date|date:"d/m/Y" }}
+        <br/>
+        <a href="{{ document_url }}">{{ document_description }}</a>
+    </p>
+    <p>
+        To stop receiving messages about this company, please unwatch the company
+        <a href="{{ settings_url }}">here</a>
+    </p>
+</div>
+</body>
+</html>

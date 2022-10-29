@@ -1,0 +1,65 @@
+{% extends "admin/change_list.html" %}
+{% load humanize %}
+{% load filters %}
+
+{% block content_title %}
+    <h1>Document Summary</h1>
+{% endblock %}
+
+{% block result_list %}
+<div>
+    <h2>Document Count</h2>
+    <table>
+        <tbody>
+            {% for row in summary %}
+            <tr>
+                <td>{{ row.key }}</td>
+                <td align="right">{{ row.value|intcomma }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div>
+    <h2>US Documents</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th align="right">Count</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in us_summary %}
+            <tr>
+                <td>{{ row.date|date:"d/m/Y, D" }}</td>
+                <td align="right">{{ row.date_count|intcomma }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div>
+    <h2>HK Documents</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th align="right">Count</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in hk_summary %}
+            <tr>
+                <td>{{ row.date|date:"d/m/Y, D" }}</td>
+                <td align="right">{{ row.date_count|intcomma }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+
+{% block pagination %}{% endblock %}

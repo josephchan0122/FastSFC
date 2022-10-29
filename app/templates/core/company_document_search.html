@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load humanize %}
+{% load filters %}
+
+{% block title %}{{ company.short_name }} ({{company.ticker}}) filings - FastSFC{% endblock %}
+{% block description %}Annual reports, interim reports, prospectuses and announcements for {{ company.short_name }}.{% endblock %}
+
+{% block content %}
+
+{% include 'includes/nav.html' %}
+{% include 'includes/company_snapshot.html' %}
+
+<div class="container">
+    {% if results > 0 %}
+    <div class="search-summary">
+        {% if results.hits.total == 1 %}
+        {{ results.hits.total }} result for "{{ query }}"
+        {% else %}
+        {{ results.hits.total }} results for "{{ query }}"
+        {% endif %}
+    </div>
+    <div class="search-results search-results-unpadded">
+        {% for doc in results %}
+        <article class="search-result">
+            <div class="title"><a href="/document/{{ doc.id }}">{{ doc.description }}</a></div>
+            <div class="subtitle">{{ doc.created_at|date:"d/m/y" }}{% if doc.cat %}, {{ doc.cat }}{% endif %}</div>
+            <ul class="fragments">
+                {% for fragment in doc.meta.highlight.body %}
+                <li class="fragment">{{ fragment|safe }}</li>
+                {% endfor %}
+            </ul>
+        </article>
+        {% endfor %}
+        <ul class="pagination">
+            {% for p in pages %}
+            <li class="page-item{% if p.label == page %} active{% endif %}">
+                <a class="page-link" href="{{ p.url }}">{{ p.label }}</a>
+            </li>
+            {% endfor %}
+        </div>
+    </div>
+    {% else %}
+    <h1>No results for "{{ query }}"</h1>
+    {% endif %}
+</div>
+
+{% include 'includes/footer_light.html' %}
+
+{% endblock %}

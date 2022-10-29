@@ -1,0 +1,18 @@
+---
+
+- include: setup_supervisor.yml
+  tags: supervisor
+
+- include: setup_fixtures.yml
+  tags: deploy
+
+- include: setup_nginx.yml
+  tags: nginx
+
+- name: restart application
+  supervisorctl:
+    name: "{{ application_name }}"
+    state: restarted
+  tags:
+    - deploy
+    - restart_app

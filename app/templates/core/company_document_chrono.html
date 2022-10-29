@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load humanize %}
+{% load filters %}
+
+{% block title %}{{ company.short_name }} ({{company.ticker}}) filings - FastSFC{% endblock %}
+{% block description %}Financials, prospectuses, news, proxies and other public documents for {{ company.short_name }}.{% endblock %}
+
+{% block content %}
+
+{% include 'includes/nav.html' %}
+{% include 'includes/company_snapshot.html' %}
+
+<div class="content container">
+    {% include 'includes/sidebar.html' with active='chronological' %}
+    <div class="document-list-chronological">
+        {% if count == 0 %}
+        <div class="empty">No results found.</div>
+        {% else %}
+        <table class="table table-document">
+            <thead>
+                <tr>
+                    <th class="col-md-1">Date</th>
+                    <th class="col-md-2">Type</th>
+                    <th class="col-md-8">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for doc in documents %}
+                <tr>
+                    <td class="date">{{ doc.date|date:"d/m/y" }}</td>
+                    {% if company.layout == 'us' %}
+                    <td class="ellipsis">{{ doc.cat.name }}</td>
+                    {% else %}
+                    <td class="ellipsis">{{ doc.cat.type|title }}</td>
+                    {% endif %}
+                    <td class="ellipsis"><a href="/document/{{ doc.id }}">{{ doc.description }}</a></td>
+                </tr>
+                {% endfor %}
+                {% if count > 20 %}
+                <tbody id="document-financials-chrono-loader"></tbody>
+                <tbody>
+                    <tr>
+                        <td colspan="3" class="load-more">
+                          <a>More <i class="fa fa-angle-down"></i></a>
+                        </td>
+                    </tr>
+                </tbody>
+                {% endif %}
+            </tbody>
+        </table>
+        {% endif %}
+    </div>
+</div>
+
+{% include 'includes/footer_light.html' %}
+
+{% endblock %}

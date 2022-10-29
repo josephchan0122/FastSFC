@@ -1,0 +1,53 @@
+[program:rqworker_ses]
+command = python manage.py rqworker ses --settings={{ django_settings_file }}
+directory = {{ project_path }}
+environment = PATH="{{ virtualenv_path }}/bin"
+user = {{ gunicorn_user }}
+process_name = %(program_name)s_%(process_num)02d
+numprocs = 1
+stdout_logfile = {{ rqworker_log_file }}
+redirect_stderr = true
+autostart = true
+autorestart = true
+
+[program:rqworker_default_mailcore]
+command = python manage.py rqworker default mailcore --settings={{ django_settings_file }}
+directory = {{ project_path }}
+environment = PATH="{{ virtualenv_path }}/bin"
+user = {{ gunicorn_user }}
+process_name = %(program_name)s_%(process_num)02d
+numprocs = 10
+stdout_logfile = {{ rqworker_log_file }}
+stdout_logfile_backups = 20
+redirect_stderr = true
+autostart = true
+autorestart = true
+
+[program:rqworker_scrapy]
+command = python manage.py rqworker scrapy --settings={{ django_settings_file }}
+directory = {{ project_path }}
+environment = PATH={{ virtualenv_path }}/bin:/usr/local/bin:%(ENV_PATH)s
+user = root
+process_name = %(program_name)s_%(process_num)02d
+numprocs = 1
+stdout_logfile = {{ rqworker_log_file }}
+stdout_logfile_backups = 20
+redirect_stderr = true
+autostart = true
+autorestart = true
+
+[program:rqworker_image]
+command = python manage.py rqworker image --settings={{ django_settings_file }}
+directory = {{ project_path }}
+environment = PATH="{{ virtualenv_path }}/bin"
+user = {{ gunicorn_user }}
+process_name = %(program_name)s_%(process_num)02d
+numprocs = 2
+stdout_logfile = {{ rqworker_log_file }}
+stdout_logfile_backups = 20
+redirect_stderr = true
+autostart = true
+autorestart = true
+
+[group:rqworkers_all]
+programs=rqworker_ses,rqworker_default_mailcore,rqworker_scrapy,rqworker_image

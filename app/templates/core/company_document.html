@@ -1,0 +1,268 @@
+{% extends "base.html" %}
+{% load humanize %}
+{% load filters %}
+
+{% block title %}{{ company.short_name }} ({{company.ticker}}) filings - FastSFC{% endblock %}
+{% block description %}Annual reports, interim reports, prospectuses and announcements for {{ company.short_name }}.{% endblock %}
+
+{% block content %}
+
+{% include 'includes/nav.html' %}
+{% include 'includes/company_snapshot.html' %}
+
+<div class="content container">
+    {% include 'includes/sidebar.html' with active='categorized' %}
+    <div class="document-list-by-category">
+        {% if empty %}
+        <div class="empty">No results found.</div>
+        {% else %}
+        <div class="col-md-6">
+            {% if financials_count > 0 %}
+            <section id="document-financials" class="document-list">
+                <h4>Financials</h4>
+                <table class="table table-document">
+                    <thead>
+                        <tr>
+                            <th class="col-md-2">Date</th>
+                            {% if company.layout == 'us' %}
+                            <th class="col-md-2">Type</th>
+                            <th class="col-md-8">Description</th>
+                            {% else %}
+                            <th class="col-md-10">Description</th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for doc in financials %}
+                        <tr>
+                            <td class="ellipsis">{{ doc.date|date:"d/m/y" }}</td>
+                            {% if company.layout == 'us' %}
+                            <td class="ellipsis">{{ doc.cat.name }}</th>
+                            {% endif %}
+                            <td class="ellipsis"><a href="/document/{{ doc.id }}">{{ doc.description }}</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                    {% if financials_count == 9 %}
+                    <tbody id="document-financials-loader"></tbody>
+                    <tbody>
+                        <tr>
+                            <td colspan="3" class="load-more load-more-financials">
+                              <a>More <i class="fa fa-angle-down"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                    {% endif %}
+                </table>
+            </section>
+            {% endif %}
+
+             {% if prospectuses_count > 0 %}
+            <section id="document-prospectuses" class="document-list">
+                <h4>Prospectuses</h4>
+                <table class="table table-document">
+                    <thead>
+                        <tr>
+                            <th class="col-md-2">Date</th>
+                            {% if company.layout == 'us' %}
+                            <th class="col-md-2">Type</th>
+                            <th class="col-md-8">Description</th>
+                            {% else %}
+                            <th class="col-md-10">Description</th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for doc in prospectuses %}
+                        <tr>
+                            <td class="ellipsis">{{ doc.date|date:"d/m/y" }}</td>
+                            {% if company.layout == 'us' %}
+                            <td class="ellipsis">{{ doc.cat.name }}</th>
+                            {% endif %}
+                            <td class="ellipsis"><a href="/document/{{ doc.id }}">{{ doc.description }}</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                    {% if prospectuses_count == 9 %}
+                    <tbody id="document-prospectuses-loader"></tbody>
+                    <tbody>
+                        <tr>
+                            <td colspan="3" class="load-more load-more-prospectuses">
+                              <a>More <i class="fa fa-angle-down"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                    {% endif %}
+                </table>
+            </section>
+            {% endif %}
+
+            {% if others_count > 0 %}
+            <section id="document-other" class="document-list">
+                <h4>Others</h4>
+                <table class="table table-document">
+                    <thead>
+                        <tr>
+                            <th class="col-md-2">Date</th>
+                            {% if company.layout == 'us' %}
+                            <th class="col-md-2">Type</th>
+                            <th class="col-md-8">Description</th>
+                            {% else %}
+                            <th class="col-md-10">Description</th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for doc in others %}
+                        <tr>
+                            <td class="ellipsis">{{ doc.date|date:"d/m/y" }}</td>
+                            {% if company.layout == 'us' %}
+                            <td class="ellipsis">{{ doc.cat.name }}</th>
+                            {% endif %}
+                            <td class="ellipsis"><a href="/document/{{ doc.id }}">{{ doc.description }}</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                    {% if others_count == 9 %}
+                    <tbody id="document-other-loader"></tbody>
+                    <tbody>
+                        <tr>
+                            <td colspan="3" class="load-more load-more-other">
+                              <a>More <i class="fa fa-angle-down"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                    {% endif %}
+                </table>
+            </section>
+            {% endif %}
+        </div>
+
+        <div class="col-md-6">
+            {% if announcements_count > 0 %}
+            <section id="document-announcements" class="document-list">
+                <h4>Announcements</h4>
+                <table class="table table-document">
+                    <thead>
+                        <tr>
+                            <th class="col-md-2">Date</th>
+                            {% if company.layout == 'us' %}
+                            <th class="col-md-2">Type</th>
+                            <th class="col-md-8">Description</th>
+                            {% else %}
+                            <th class="col-md-10">Description</th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for doc in announcements %}
+                        <tr>
+                            <td class="ellipsis">{{ doc.date|date:"d/m/y" }}</td>
+                            {% if company.layout == 'us' %}
+                            <td class="ellipsis">{{ doc.cat.name }}</th>
+                            {% endif %}
+                            <td class="ellipsis"><a href="/document/{{ doc.id }}">{{ doc.description }}</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                    {% if announcements_count == 9 %}
+                    <tbody id="document-announcements-loader"></tbody>
+                    <tbody>
+                        <tr>
+                            <td colspan="3" class="load-more load-more-announcements">
+                              <a>More <i class="fa fa-angle-down"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                    {% endif %}
+                </table>
+            </section>
+            {% endif %}
+
+            {% if proxies_count > 0 %}
+            <section id="document-proxies" class="document-list">
+                <h4>Proxies</h4>
+                <table class="table table-document">
+                    <thead>
+                        <tr>
+                            <th class="col-md-2">Date</th>
+                            {% if company.layout == 'us' %}
+                            <th class="col-md-2">Type</th>
+                            <th class="col-md-8">Description</th>
+                            {% else %}
+                            <th class="col-md-10">Description</th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for doc in proxies %}
+                        <tr>
+                            <td class="ellipsis">{{ doc.date|date:"d/m/y" }}</td>
+                            {% if company.layout == 'us' %}
+                            <td class="ellipsis">{{ doc.cat.name }}</th>
+                            {% endif %}
+                            <td class="ellipsis"><a href="/document/{{ doc.id }}">{{ doc.description }}</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                    {% if proxies_count == 9 %}
+                    <tbody id="document-proxies-loader"></tbody>
+                    <tbody>
+                        <tr>
+                            <td colspan="3" class="load-more load-more-proxies">
+                              <a>More <i class="fa fa-angle-down"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                    {% endif %}
+                </table>
+            </section>
+            {% endif %}
+
+            {% if ownership_count > 0 %}
+            <section id="document-ownership" class="document-list">
+                <h4>Ownership</h4>
+                <table class="table table-document">
+                    <thead>
+                        <tr>
+                            <th class="col-md-2">Date</th>
+                            {% if company.layout == 'us' %}
+                            <th class="col-md-2">Type</th>
+                            <th class="col-md-8">Description</th>
+                            {% else %}
+                            <th class="col-md-10">Description</th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for doc in ownership %}
+                        <tr>
+                            <td class="ellipsis">{{ doc.date|date:"d/m/y" }}</td>
+                            {% if company.layout == 'us' %}
+                            <td class="ellipsis">{{ doc.cat.name }}</th>
+                            {% endif %}
+                            <td class="ellipsis"><a href="/document/{{ doc.id }}">{{ doc.description }}</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                    {% if ownership_count == 9 %}
+                    <tbody id="document-ownership-loader"></tbody>
+                    <tbody>
+                        <tr>
+                            <td colspan="3" class="load-more load-more-ownership">
+                              <a>More <i class="fa fa-angle-down"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                    {% endif %}
+                </table>
+            </section>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+{% include 'includes/footer_light.html' %}
+
+{% endblock %}

@@ -1,0 +1,8 @@
+<nav class="navbar-company">
+    <div class="container">
+        <ul class="nav navbar-nav">
+            <li><a{% if route == 'company_document' %} class="active"{% endif %} href="/company/{{ ticker }}">Filings</a></li>
+            <li><a{% if route == 'company_graph' %} class="active"{% endif %} href="/company/graph/{{ ticker }}">Graph</a></li>
+        </ul>
+    </div>
+</nav>

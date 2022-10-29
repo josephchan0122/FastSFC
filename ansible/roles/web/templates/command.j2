@@ -1,0 +1,5 @@
+#!/bin/bash
+source /webapps/{{ project_name }}/bin/activate
+cd /webapps/{{ project_name }}/{{ application_name }}
+export PYTHONIOENCODING='utf-8'
+python manage.py $* --settings={{ django_settings_file }}

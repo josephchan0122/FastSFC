@@ -1,0 +1,10 @@
+---
+
+git_repo: git@bitbucket.org:justinyek/fast.git
+git_scraper_repo: git@bitbucket.org:justinyek/fast-crawler.git
+
+project_name: fastdataco
+application_name: fastsfc
+scraper_name: scraper
+
+ssl_dest_dir: /etc/ssl

@@ -1,0 +1,52 @@
+---
+
+- name: Set virtualenv ownership and permissions
+  file:
+    path: "{{ virtualenv_path }}"
+    owner: "{{ gunicorn_user }}"
+    group: "{{ gunicorn_group }}"
+    state: directory
+    recurse: yes
+  tags: permissions
+
+- name: Install packages required by the Django app inside virtualenv
+  pip: virtualenv={{ virtualenv_path }} requirements={{ requirements_file }}
+  tags: pip
+
+- name: Run the Django make migrations command
+  django_manage:
+    command: makemigrations
+    app_path: "{{ project_path }}"
+    virtualenv: "{{ virtualenv_path }}"
+    settings: "{{ django_settings_file }}"
+  environment: "{{ django_environment }}"
+  when: run_django_makemigrations is defined and run_django_makemigrations
+  tags: django.makemigrations
+
+- name: Run Django database migrations
+  django_manage:
+    command: migrate
+    app_path: "{{ project_path }}"
+    virtualenv: "{{ virtualenv_path }}"
+    settings: "{{ django_settings_file }}"
+  environment: "{{ django_environment }}"
+  when: run_django_db_migrations is defined and run_django_db_migrations
+  tags: django.migrate
+
+# - name: npm install
+#   npm: path={{ project_path }}
+#   tags: frontend
+
+- name: Create command script
+  template: src=command.j2
+            dest=/webapps/command.sh
+            backup=yes
+            force=yes
+            mode="u+rwx"
+
+- name: Create scrapy script
+  template: src=scrapy.j2
+            dest=/webapps/scrapy.sh
+            backup=yes
+            force=yes
+            mode="u+rwx"

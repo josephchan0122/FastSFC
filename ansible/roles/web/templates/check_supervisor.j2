@@ -1,0 +1,10 @@
+#!/bin/bash
+ps cax | grep supervisor > /dev/null
+if [ $? -eq 0 ]; then
+  date +"%m/%d/%Y %H:%M:%S Supervisor running." >> {{ supervisor_log_file }}
+else
+  date +"%m/%d/%Y %H:%M:%S Supervisor is not running. Restart now." >> {{ supervisor_log_file }}
+  curl -X POST --data-urlencode 'payload={"channel": "#metisa", "username": "Production Bot", "text": "Supervisor Died. Restarting..."}' {{ slack_url }}
+  supervisord -c /etc/supervisor/supervisord.conf
+  supervisorctl restart {{ application_name }}
+fi

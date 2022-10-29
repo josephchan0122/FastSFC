@@ -1,0 +1,884 @@
+[
+  {
+    "icb": "0001",
+    "supersectors": [
+      {
+        "icb": "0500",
+        "name": "Oil & Gas",
+        "sectors": [
+          {
+            "icb": "0530",
+            "name": "Oil & Gas Producers",
+            "subsectors": [
+              {
+                "icb": "0533",
+                "name": "Exploration & Production"
+              },
+              {
+                "icb": "0537",
+                "name": "Integrated Oil & Gas"
+              }
+            ]
+          },
+          {
+            "icb": "0570",
+            "name": "Oil Equipment, Services & Distribution",
+            "subsectors": [
+              {
+                "icb": "0573",
+                "name": "Oil Equipment & Services"
+              },
+              {
+                "icb": "0577",
+                "name": "Pipelines"
+              }
+            ]
+          },
+          {
+            "icb": "0580",
+            "name": "Alternative Energy",
+            "subsectors": [
+              {
+                "icb": "0583",
+                "name": "Renewable Energy Equipment"
+              },
+              {
+                "icb": "0587",
+                "name": "Alternative Fuels"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "name": "Oil & Gas"
+  },
+  {
+    "icb": "1000",
+    "supersectors": [
+      {
+        "icb": "1300",
+        "name": "Chemicals",
+        "sectors": [
+          {
+            "icb": "1350",
+            "name": "Chemicals",
+            "subsectors": [
+              {
+                "icb": "1353",
+                "name": "Commodity Chemicals"
+              },
+              {
+                "icb": "1357",
+                "name": "Specialty Chemicals"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "icb": "1700",
+        "name": "Basic Resources",
+        "sectors": [
+          {
+            "icb": "1730",
+            "name": "Forestry & Paper",
+            "subsectors": [
+              {
+                "icb": "1733",
+                "name": "Forestry"
+              },
+              {
+                "icb": "1737",
+                "name": "Paper"
+              }
+            ]
+          },
+          {
+            "icb": "1750",
+            "name": "Industrial Metals & Mining",
+            "subsectors": [
+              {
+                "icb": "1753",
+                "name": "Aluminum"
+              },
+              {
+                "icb": "1755",
+                "name": "Nonferrous Metals"
+              },
+              {
+                "icb": "1757",
+                "name": "Iron & Steel"
+              }
+            ]
+          },
+          {
+            "icb": "1770",
+            "name": "Mining",
+            "subsectors": [
+              {
+                "icb": "1771",
+                "name": "Coal"
+              },
+              {
+                "icb": "1773",
+                "name": "Diamonds & Gemstones"
+              },
+              {
+                "icb": "1775",
+                "name": "General Mining"
+              },
+              {
+                "icb": "1777",
+                "name": "Gold Mining"
+              },
+              {
+                "icb": "1779",
+                "name": "Platinum & Precious Metals"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "name": "Basic Materials"
+  },
+  {
+    "icb": "2000",
+    "supersectors": [
+      {
+        "icb": "2300",
+        "name": "Construction & Materials",
+        "sectors": [
+          {
+            "icb": "2350",
+            "name": "Construction & Materials",
+            "subsectors": [
+              {
+                "icb": "2353",
+                "name": "Building Materials & Fixtures"
+              },
+              {
+                "icb": "2357",
+                "name": "Heavy Construction"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "icb": "2700",
+        "name": "Industrial Goods & Services",
+        "sectors": [
+          {
+            "icb": "2710",
+            "name": "Aerospace & Defense",
+            "subsectors": [
+              {
+                "icb": "2713",
+                "name": "Aerospace"
+              },
+              {
+                "icb": "2717",
+                "name": "Defense"
+              }
+            ]
+          },
+          {
+            "icb": "2720",
+            "name": "General Industrials",
+            "subsectors": [
+              {
+                "icb": "2723",
+                "name": "Containers & Packaging"
+              },
+              {
+                "icb": "2727",
+                "name": "Diversified Industrials"
+              }
+            ]
+          },
+          {
+            "icb": "2730",
+            "name": "Electronic & Electrical Equipment",
+            "subsectors": [
+              {
+                "icb": "2733",
+                "name": "Electrical Components & Equipment"
+              },
+              {
+                "icb": "2737",
+                "name": "Electronic Equipment"
+              }
+            ]
+          },
+          {
+            "icb": "2750",
+            "name": "Industrial Engineering",
+            "subsectors": [
+              {
+                "icb": "2753",
+                "name": "Commercial Vehicles & Trucks"
+              },
+              {
+                "icb": "2757",
+                "name": "Industrial Machinery"
+              }
+            ]
+          },
+          {
+            "icb": "2770",
+            "name": "Industrial Transportation",
+            "subsectors": [
+              {
+                "icb": "2771",
+                "name": "Delivery Services"
+              },
+              {
+                "icb": "2773",
+                "name": "Marine Transportation"
+              },
+              {
+                "icb": "2775",
+                "name": "Railroads"
+              },
+              {
+                "icb": "2777",
+                "name": "Transportation Services"
+              },
+              {
+                "icb": "2779",
+                "name": "Trucking"
+              }
+            ]
+          },
+          {
+            "icb": "2790",
+            "name": "Support Services",
+            "subsectors": [
+              {
+                "icb": "2791",
+                "name": "Business Support Services"
+              },
+              {
+                "icb": "2793",
+                "name": "Business Training & Employment Agencies"
+              },
+              {
+                "icb": "2795",
+                "name": "Financial Administration"
+              },
+              {
+                "icb": "2797",
+                "name": "Industrial Suppliers"
+              },
+              {
+                "icb": "2799",
+                "name": "Waste & Disposal Services"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "name": "Industrials"
+  },
+  {
+    "icb": "3000",
+    "supersectors": [
+      {
+        "icb": "3300",
+        "name": "Automobiles & Parts",
+        "sectors": [
+          {
+            "icb": "3350",
+            "name": "Automobiles & Parts",
+            "subsectors": [
+              {
+                "icb": "3353",
+                "name": "Automobiles"
+              },
+              {
+                "icb": "3355",
+                "name": "Auto Parts"
+              },
+              {
+                "icb": "3357",
+                "name": "Tires"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "icb": "3500",
+        "name": "Food & Beverage",
+        "sectors": [
+          {
+            "icb": "3530",
+            "name": "Beverages",
+            "subsectors": [
+              {
+                "icb": "3533",
+                "name": "Brewers"
+              },
+              {
+                "icb": "3535",
+                "name": "Distillers & Vintners"
+              },
+              {
+                "icb": "3537",
+                "name": "Soft Drinks"
+              }
+            ]
+          },
+          {
+            "icb": "3570",
+            "name": "Food Producers",
+            "subsectors": [
+              {
+                "icb": "3573",
+                "name": "Farming & Fishing"
+              },
+              {
+                "icb": "3577",
+                "name": "Food Products"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "icb": "3700",
+        "name": "Personal & Household Goods",
+        "sectors": [
+          {
+            "icb": "3720",
+            "name": "Household Goods & Home Construction",
+            "subsectors": [
+              {
+                "icb": "3722",
+                "name": "Durable Household Products"
+              },
+              {
+                "icb": "3724",
+                "name": "Nondurable Household Products"
+              },
+              {
+                "icb": "3726",
+                "name": "Furnishings"
+              },
+              {
+                "icb": "3728",
+                "name": "Home Construction"
+              }
+            ]
+          },
+          {
+            "icb": "3740",
+            "name": "Leisure Goods",
+            "subsectors": [
+              {
+                "icb": "3743",
+                "name": "Consumer Electronics"
+              },
+              {
+                "icb": "3745",
+                "name": "Recreational Products"
+              },
+              {
+                "icb": "3747",
+                "name": "Toys"
+              }
+            ]
+          },
+          {
+            "icb": "3760",
+            "name": "Personal Goods",
+            "subsectors": [
+              {
+                "icb": "3763",
+                "name": "Clothing & Accessories"
+              },
+              {
+                "icb": "3765",
+                "name": "Footwear"
+              },
+              {
+                "icb": "3767",
+                "name": "Personal Products"
+              }
+            ]
+          },
+          {
+            "icb": "3780",
+            "name": "Tobacco",
+            "subsectors": [
+              {
+                "icb": "3785",
+                "name": "Tobacco"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "name": "Consumer Goods"
+  },
+  {
+    "icb": "4000",
+    "supersectors": [
+      {
+        "icb": "4500",
+        "name": "Health Care",
+        "sectors": [
+          {
+            "icb": "4530",
+            "name": "Health Care Equipment & Services",
+            "subsectors": [
+              {
+                "icb": "4533",
+                "name": "Health Care Providers"
+              },
+              {
+                "icb": "4535",
+                "name": "Medical Equipment"
+              },
+              {
+                "icb": "4537",
+                "name": "Medical Supplies"
+              }
+            ]
+          },
+          {
+            "icb": "4570",
+            "name": "Pharmaceuticals & Biotechnology",
+            "subsectors": [
+              {
+                "icb": "4573",
+                "name": "Biotechnology"
+              },
+              {
+                "icb": "4577",
+                "name": "Pharmaceuticals"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "name": "Health Care"
+  },
+  {
+    "icb": "5000",
+    "supersectors": [
+      {
+        "icb": "5300",
+        "name": "Retail",
+        "sectors": [
+          {
+            "icb": "5330",
+            "name": "Food & Drug Retailers",
+            "subsectors": [
+              {
+                "icb": "5333",
+                "name": "Drug Retailers"
+              },
+              {
+                "icb": "5337",
+                "name": "Food Retailers & Wholesalers"
+              }
+            ]
+          },
+          {
+            "icb": "5370",
+            "name": "General Retailers",
+            "subsectors": [
+              {
+                "icb": "5371",
+                "name": "Apparel Retailers"
+              },
+              {
+                "icb": "5373",
+                "name": "Broadline Retailers"
+              },
+              {
+                "icb": "5375",
+                "name": "Home Improvement Retailers"
+              },
+              {
+                "icb": "5377",
+                "name": "Specialized Consumer Services"
+              },
+              {
+                "icb": "5379",
+                "name": "Specialty Retailers"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "icb": "5500",
+        "name": "Media",
+        "sectors": [
+          {
+            "icb": "5550",
+            "name": "Media",
+            "subsectors": [
+              {
+                "icb": "5553",
+                "name": "Broadcasting & Entertainment"
+              },
+              {
+                "icb": "5555",
+                "name": "Media Agencies"
+              },
+              {
+                "icb": "5557",
+                "name": "Publishing"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "icb": "5700",
+        "name": "Travel & Leisure",
+        "sectors": [
+          {
+            "icb": "5750",
+            "name": "Travel & Leisure",
+            "subsectors": [
+              {
+                "icb": "5751",
+                "name": "Airlines"
+              },
+              {
+                "icb": "5752",
+                "name": "Gambling"
+              },
+              {
+                "icb": "5753",
+                "name": "Hotels"
+              },
+              {
+                "icb": "5755",
+                "name": "Recreational Services"
+              },
+              {
+                "icb": "5757",
+                "name": "Restaurants & Bars"
+              },
+              {
+                "icb": "5759",
+                "name": "Travel & Tourism"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "name": "Consumer Services"
+  },
+  {
+    "icb": "6000",
+    "supersectors": [
+      {
+        "icb": "6500",
+        "name": "Telecommunications",
+        "sectors": [
+          {
+            "icb": "6530",
+            "name": "Fixed Line Telecommunications",
+            "subsectors": [
+              {
+                "icb": "6535",
+                "name": "Fixed Line Telecommunications"
+              }
+            ]
+          },
+          {
+            "icb": "6570",
+            "name": "Mobile Telecommunications",
+            "subsectors": [
+              {
+                "icb": "6575",
+                "name": "Mobile Telecommunications"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "name": "Telecommunications"
+  },
+  {
+    "icb": "7000",
+    "supersectors": [
+      {
+        "icb": "7500",
+        "name": "Utilities",
+        "sectors": [
+          {
+            "icb": "7530",
+            "name": "Electricity",
+            "subsectors": [
+              {
+                "icb": "7535",
+                "name": "Conventional Electricity"
+              },
+              {
+                "icb": "7537",
+                "name": "Alternative Electricity"
+              }
+            ]
+          },
+          {
+            "icb": "7570",
+            "name": "Gas, Water & Multiutilities",
+            "subsectors": [
+              {
+                "icb": "7573",
+                "name": "Gas Distribution"
+              },
+              {
+                "icb": "7575",
+                "name": "Multiutilities"
+              },
+              {
+                "icb": "7577",
+                "name": "Water"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "name": "Utilities"
+  },
+  {
+    "icb": "8000",
+    "supersectors": [
+      {
+        "icb": "8300",
+        "name": "Banks",
+        "sectors": [
+          {
+            "icb": "8350",
+            "name": "Banks",
+            "subsectors": [
+              {
+                "icb": "8355",
+                "name": "Banks"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "icb": "8500",
+        "name": "Insurance",
+        "sectors": [
+          {
+            "icb": "8530",
+            "name": "Nonlife Insurance",
+            "subsectors": [
+              {
+                "icb": "8532",
+                "name": "Full Line Insurance"
+              },
+              {
+                "icb": "8534",
+                "name": "Insurance Brokers"
+              },
+              {
+                "icb": "8536",
+                "name": "Property & Casualty Insurance"
+              },
+              {
+                "icb": "8538",
+                "name": "Reinsurance"
+              }
+            ]
+          },
+          {
+            "icb": "8570",
+            "name": "Life Insurance",
+            "subsectors": [
+              {
+                "icb": "8575",
+                "name": "Life Insurance"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "icb": "8600",
+        "name": "Real Estate",
+        "sectors": [
+          {
+            "icb": "8630",
+            "name": "Real Estate Investment & Services",
+            "subsectors": [
+              {
+                "icb": "8633",
+                "name": "Real Estate Holding & Development"
+              },
+              {
+                "icb": "8637",
+                "name": "Real Estate Services"
+              }
+            ]
+          },
+          {
+            "icb": "8670",
+            "name": "Real Estate Investment Trusts",
+            "subsectors": [
+              {
+                "icb": "8671",
+                "name": "Industrial & Office REITs"
+              },
+              {
+                "icb": "8672",
+                "name": "Retail REITs"
+              },
+              {
+                "icb": "8673",
+                "name": "Residential REITs"
+              },
+              {
+                "icb": "8674",
+                "name": "Diversified REITs"
+              },
+              {
+                "icb": "8675",
+                "name": "Specialty REITs"
+              },
+              {
+                "icb": "8676",
+                "name": "Mortgage REITs"
+              },
+              {
+                "icb": "8677",
+                "name": "Hotel & Lodging REITs"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "icb": "8700",
+        "name": "Financial Services",
+        "sectors": [
+          {
+            "icb": "8770",
+            "name": "Financial Services",
+            "subsectors": [
+              {
+                "icb": "8771",
+                "name": "Asset Managers"
+              },
+              {
+                "icb": "8773",
+                "name": "Consumer Finance"
+              },
+              {
+                "icb": "8775",
+                "name": "Specialty Finance"
+              },
+              {
+                "icb": "8777",
+                "name": "Investment Services"
+              },
+              {
+                "icb": "8779",
+                "name": "Mortgage Finance"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "icb": "8900",
+        "name": "Equity/Non-Equity Investment Instruments",
+        "sectors": [
+          {
+            "icb": "8980",
+            "name": "Equity Investment Instruments",
+            "subsectors": [
+              {
+                "icb": "8985",
+                "name": "Equity Investment Instruments"
+              }
+            ]
+          },
+          {
+            "icb": "8990",
+            "name": "Nonequity Investment Instruments",
+            "subsectors": [
+              {
+                "icb": "8995",
+                "name": "Nonequity Investment Instruments"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "name": "Financials"
+  },
+  {
+    "icb": "9000",
+    "supersectors": [
+      {
+        "icb": "9500",
+        "name": "Technology",
+        "sectors": [
+          {
+            "icb": "9530",
+            "name": "Software & Computer Services",
+            "subsectors": [
+              {
+                "icb": "9533",
+                "name": "Computer Services"
+              },
+              {
+                "icb": "9535",
+                "name": "Internet"
+              },
+              {
+                "icb": "9537",
+                "name": "Software"
+              }
+            ]
+          },
+          {
+            "icb": "9570",
+            "name": "Technology Hardware & Equipment",
+            "subsectors": [
+              {
+                "icb": "9572",
+                "name": "Computer Hardware"
+              },
+              {
+                "icb": "9574",
+                "name": "Electronic Office Equipment"
+              },
+              {
+                "icb": "9576",
+                "name": "Semiconductors"
+              },
+              {
+                "icb": "9578",
+                "name": "Telecommunications Equipment"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "name": "Technology"
+  }
+]

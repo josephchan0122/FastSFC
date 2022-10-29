@@ -1,0 +1,4 @@
+#!/bin/bash
+source /webapps/{{ project_name }}/bin/activate
+cd /webapps/{{ project_name }}/{{ application_name }}/scraper
+export PYTHON_ENV=production; scrapy $*

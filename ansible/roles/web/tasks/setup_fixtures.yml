@@ -1,0 +1,17 @@
+---
+
+- name: Install Django database Exchange fixtures
+  django_manage:
+    command: loaddata exchange
+    app_path: "{{ project_path }}"
+    virtualenv: "{{ virtualenv_path }}"
+    settings: "{{ django_settings_file }}"
+  environment: "{{ django_environment }}"
+
+- name: Install Django database Period fixtures
+  django_manage:
+    command: loaddata period
+    app_path: "{{ project_path }}"
+    virtualenv: "{{ virtualenv_path }}"
+    settings: "{{ django_settings_file }}"
+  environment: "{{ django_environment }}"

@@ -1,0 +1,25 @@
+---
+
+- include: install_additional_packages.yml
+  tags: packages
+
+- include: create_users_and_groups.yml
+  tags: create_users
+
+- include: setup_virtualenv.yml
+  tags: virtualenv
+
+- include: setup_git_repo.yml
+  tags: deploy
+
+- include: setup_django_app.yml
+  tags:
+    - deploy
+    - django
+
+- include: setup_compute.yml
+  when: computeserver is defined and computeserver
+  tags: deploy
+
+- include: setup_web.yml
+  when: webserver is defined and webserver

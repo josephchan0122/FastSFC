@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load humanize %}
+{% load filters %}
+
+{% block title %}{{ company.short_name }} ({{company.ticker}}) filings - FastSFC{% endblock %}
+{% block description %}Financials, prospectuses, news, proxies and other public documents for {{ company.short_name }}.{% endblock %}
+
+{% block content %}
+
+{% include 'includes/nav.html' %}
+
+<section class="snapshot container">
+    <h1>{{ company.full_name }}</h1>
+    <div class="description">
+        <span class="exchange-ticker">{{ company.exchange.short_name }}: {{ company.ticker }}</span>
+        <span class="website"><a href="{{ company.website }}" target="_blank"> {{ company.website }}</a></span>
+    </div>
+</section>
+
+<div class="content container">
+    {% include 'includes/sidebar.html' with active='website' %}
+    <div class="document-list-chronological">
+        <table class="table table-document">
+            <thead>
+                <tr>
+                    <th class="col-md-12">Document</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for doc in documents %}
+                <tr>
+                    <td class="ellipsis"><a href="/document/website/{{ doc.id }}">{{ doc.description }}</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            {% if count == 0 %}
+                <tr>
+                    <td class="no-documents">No documents found</td>
+                </tr>
+            {% endif %}
+            {% if count > 20 %}
+            <tbody id="document-financials-chrono-loader"></tbody>
+            <tbody>
+                <tr>
+                    <td class="load-more">
+                      <a>More <i class="fa fa-angle-down"></i></a>
+                    </td>
+                </tr>
+            </tbody>
+            {% endif %}
+        </table>
+    </div>
+</div>
+
+{% include 'includes/footer_light.html' %}
+
+{% endblock %}

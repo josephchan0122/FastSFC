@@ -1,0 +1,58 @@
+---
+
+- name: Export remote RDS database and import db into local MySQL
+  hosts: local
+  connection: local
+  sudo: no
+  vars_files:
+    - env_vars/base.yml
+    - env_vars/{{ env }}.yml
+    - env_vars/local.yml
+  tasks:
+    - name: Install MySQL-python driver
+      pip: name=MySQL-python
+      tags:
+        - local
+        - remote
+
+    - name: Mysqldump the remote DB
+      shell: mysqldump --default-character-set=utf8mb4 --user={{ db_user }} --password={{ db_password }} --quick {{ project_name }} --single-transaction --host={{ item }} --compress > /tmp/{{ project_name }}-{{ env }}.sql
+      with_items: "{{ groups.dbservers }}"
+      tags:
+        - remote
+
+    - name: Delete local database
+      mysql_db:
+        name: '{{ mysql_local_db_name }}'
+        state: absent
+        login_user: '{{ mysql_local_db_user }}'
+        login_password: '{{ mysql_local_db_pass }}'
+      tags:
+        - local
+
+    - name: Create local database
+      mysql_db:
+        name: '{{ mysql_local_db_name }}'
+        state: present
+        login_user: '{{ mysql_local_db_user }}'
+        login_password: '{{ mysql_local_db_pass }}'
+      tags:
+        - local
+
+    - name: Import exported db into local MySQL
+      mysql_db:
+        name: '{{ mysql_local_db_name }}'
+        state: import
+        target: '/tmp/{{ project_name }}-{{ env }}.sql'
+        login_user: '{{ mysql_local_db_user }}'
+        login_password: '{{ mysql_local_db_pass }}'
+      tags:
+        - local
+        - import
+
+    - name: Remove exported MySQL file zip
+      file:
+        path: '/tmp/{{ project_name }}-{{ env }}.sql'
+        state: absent
+      tags:
+        - cleanup

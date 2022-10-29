@@ -1,0 +1,12 @@
+[
+    {"model": "core.Period", "pk": 1, "fields": {"short_name": "FY"}},
+    {"model": "core.Period", "pk": 2, "fields": {"short_name": "CY"}},
+    {"model": "core.Period", "pk": 3, "fields": {"short_name": "1H"}},
+    {"model": "core.Period", "pk": 4, "fields": {"short_name": "2H"}},
+    {"model": "core.Period", "pk": 5, "fields": {"short_name": "1Q"}},
+    {"model": "core.Period", "pk": 6, "fields": {"short_name": "2Q"}},
+    {"model": "core.Period", "pk": 7, "fields": {"short_name": "3Q"}},
+    {"model": "core.Period", "pk": 8, "fields": {"short_name": "4Q"}},
+    {"model": "core.Period", "pk": 9, "fields": {"short_name": "9M"}},
+    {"model": "core.Period", "pk": 10, "fields": {"short_name": "LTM"}}
+]

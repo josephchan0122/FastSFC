@@ -1,0 +1,17 @@
+---
+
+- name: Install node and npm
+  apt: name={{ item }} update_cache={{ update_apt_cache }} force=yes state=installed
+  with_items:
+    - nodejs
+    - npm
+  tags: node
+
+- name: Install frontend dependencies
+  npm: >
+   name={{ item }}
+   state=present
+   global=yes
+  with_items:
+    - gulp
+  tags: node

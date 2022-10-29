@@ -1,0 +1,9 @@
+<div class="sidebar">
+    <a class="sidebar-item{% if active == 'categorized' %} active{% endif %}" href="{% url 'core:company_document_categorized' ticker=company.identifier %}"><i class="fa fa-th-large"></i> Categorized</a>
+    <a class="sidebar-item{% if active == 'chronological' %} active{% endif %}" href="{% url 'core:company_document_chronological' ticker=company.identifier %}"><i class="fa fa-th-list"></i> Chronological</a>
+    <!-- <a class="sidebar-item{% if active == 'website' %} active{% endif %}" href="{% url 'core:company_website_document' ticker=company.ticker %}"><i class="fa fa-book"></i> Presentations</a> -->
+    {% if company.ticker %}
+    <div class="sidebar-header">External Links</div>
+    <a class="sidebar-item" href="https://www.google.com/search?q={{ company.ticker }}"><i class="fa fa-external-link"></i> Google Finance</a>
+    {% endif %}
+</div>

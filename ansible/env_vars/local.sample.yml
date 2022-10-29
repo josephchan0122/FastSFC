@@ -1,0 +1,9 @@
+# local.py is for importing/exporting data to/from remote dbs
+
+# name of your local database
+mysql_local_db_name: {{ NAME_OF_DATABASE }}
+mysql_local_db_user: {{ USERNAME_OF_MYSQL }}
+mysql_local_db_pass: {{ PASSWORD_OF_MYSQL }}
+
+# path to python interpreter (type `which python` when in virtualenv)
+ansible_python_interpreter: {{ PYTHON_PATH }}
